@@ -1,0 +1,38 @@
+{
+  "name": "studio-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Studio's backend API. Implements apps/studio-web/src/lib/api.ts, which is the frozen contract.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx test/api.test.mts && tsx test/store.test.mts && tsx test/ai.test.mts && tsx test/billing.test.mts && tsx test/social.test.mts && tsx test/security.test.mts && tsx test/writer.test.mts && tsx test/video.test.mts && tsx test/edits.test.mts",
+    "bundle": "node scripts/bundle.mjs",
+    "start:prod": "node --enable-source-maps dist/index.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.120.0",
+    "@fastify/cors": "^10.0.0",
+    "@fastify/multipart": "^10.1.1",
+    "@fastify/rate-limit": "^11.2.1",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^16.4.0",
+    "fastify": "^5.1.0",
+    "fastify-plugin": "^5.1.0",
+    "ffmpeg-static": "^5.2.0",
+    "jsonwebtoken": "^9.0.3",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^20.19.0",
+    "tsx": "^4.19.0",
+    "typescript": "^6.0.0",
+    "esbuild": "^0.28.2"
+  }
+}

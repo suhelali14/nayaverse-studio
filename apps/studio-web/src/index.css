@@ -1,0 +1,245 @@
+@import '@fontsource-variable/archivo/wdth.css';
+@import '@fontsource/mukta/devanagari-500.css';
+@import '@fontsource/mukta/devanagari-700.css';
+@import '@fontsource/mukta/devanagari-800.css';
+/* The reel's caption face, drawn onto the canvas -- the creator's output,
+   not this app's chrome, which is Archivo. See CAPTION_FACE. */
+@import '@fontsource-variable/inter';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Two rooms, one set of names.
+ *
+ * The website is light: it is read in daylight, on a phone, by someone
+ * deciding. The signed-in app is dark neutral graphite, because its job is
+ * to judge pictures, and a bright frame around a picture changes how its
+ * colours and contrast read -- the reason every grading suite and editing
+ * app is grey. App.tsx sets `data-theme="dark"` on <html> for /app routes,
+ * so toasts, the loading state and the page ground all follow.
+ *
+ * Red is the one saturated colour: the primary action, the playhead and
+ * the current selection's edge. Everything else is neutral, so the colour
+ * on screen is the footage.
+ *
+ * Values are RGB channel triplets so Tailwind can apply opacity to them:
+ * with plain `var()` colours, every `/40` modifier silently generated
+ * nothing.
+ */
+:root {
+  --ground: 255 255 255;
+  --panel: 255 255 255;
+  --panel-2: 246 246 245;
+  --panel-3: 238 238 236;
+  --line: 232 232 230;
+  --line-strong: 212 212 209;
+
+  --ink: 20 20 20;
+  --ink-2: 74 74 74;
+  --ink-3: 110 110 110;
+
+  --accent: 214 39 24;
+  --accent-ink: 255 255 255;
+  --accent-soft: 253 236 234;
+  --accent-deep: 184 30 17;
+  --select: 214 39 24;
+
+  --monitor: 17 17 18;
+
+  --good: 22 120 72;
+  --good-soft: 229 244 235;
+  --warn: 150 96 0;
+  --warn-soft: 255 244 214;
+  --bad: 190 36 24;
+  --bad-soft: 253 236 234;
+
+  --kind-clip: 46 92 150;
+  --kind-photo: 34 112 101;
+  --kind-asset: 98 78 160;
+  --kind-solid: 110 64 130;
+  --cue: 214 160 40;
+  --cue-ink: 28 22 8;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --ground: 12 12 13;
+  --panel: 21 21 23;
+  --panel-2: 29 29 32;
+  --panel-3: 38 38 42;
+  --line: 37 37 41;
+  --line-strong: 56 56 62;
+
+  --ink: 236 236 238;
+  --ink-2: 174 174 181;
+  --ink-3: 136 136 144;
+
+  --accent: 214 39 24;
+  --accent-ink: 255 255 255;
+  --accent-soft: 58 24 21;
+  --accent-deep: 232 56 40;
+  --select: 240 74 58;
+
+  --monitor: 8 8 9;
+
+  --good: 74 196 126;
+  --good-soft: 18 46 31;
+  --warn: 232 176 52;
+  --warn-soft: 50 39 14;
+  --bad: 255 112 98;
+  --bad-soft: 56 22 20;
+
+  --kind-clip: 44 88 146;
+  --kind-photo: 30 104 94;
+  --kind-asset: 92 74 152;
+  --kind-solid: 96 58 116;
+  --cue: 200 150 38;
+  --cue-ink: 24 18 6;
+
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Anchored sections must not land under the sticky header. */
+    scroll-padding-top: 80px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ground font-sans text-ink antialiased;
+    margin: 0;
+    font-stretch: 100%;
+    caret-color: rgb(var(--accent));
+  }
+
+  /* Numbers in this product are timecodes, durations and prices: they sit
+     in columns and must not jitter as they change. */
+  time,
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Keyboards get a ring; a mouse click does not leave one behind. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--select));
+    outline-offset: 2px;
+  }
+
+  /* An input under 16px makes iOS Safari zoom the viewport and stay
+     zoomed. 16px is the threshold, not an aesthetic choice. */
+  @media (pointer: coarse) {
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+    }
+  }
+
+  ::selection {
+    background: rgb(var(--select) / 0.28);
+  }
+
+  ::placeholder {
+    color: rgb(var(--ink-3));
+    opacity: 1;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--line-strong)) transparent;
+  }
+
+  a {
+    text-underline-offset: 3px;
+  }
+
+  /* The resize grip on a text field: a browser surface nobody draws, so it
+     is themed here rather than left as the platform's default. */
+  textarea::-webkit-resizer {
+    background:
+      linear-gradient(135deg, transparent 55%, rgb(var(--line-strong)) 55%, rgb(var(--line-strong)) 62%, transparent 62%,
+        transparent 72%, rgb(var(--line-strong)) 72%, rgb(var(--line-strong)) 79%, transparent 79%);
+  }
+
+  input[type='checkbox'],
+  input[type='radio'] {
+    accent-color: rgb(var(--accent));
+  }
+}
+
+@layer components {
+  /* A panel's heading row in the app: sentence case, quiet, one size. */
+  .panel-head {
+    @apply flex h-10 shrink-0 items-center justify-between gap-3 border-b border-line px-4 text-sm font-semibold text-ink;
+  }
+
+  /* Website headings: Archivo opened a little past normal width, which
+     gives a heading the set of a film title without changing face. */
+  .display {
+    font-weight: 700;
+    font-stretch: 106%;
+    letter-spacing: -0.032em;
+  }
+
+  /* The two biggest lines on the site: the hero and the close. Fluid,
+     because they are read on everything from a phone to a 27" screen. */
+  .display-hero {
+    font-weight: 760;
+    font-stretch: 112%;
+    letter-spacing: -0.04em;
+    line-height: 0.96;
+    font-size: clamp(2.6rem, 1.4rem + 3.9vw, 5rem);
+    text-wrap: balance;
+  }
+}
+
+/* Ruler ticks, as the editor's timeline draws them: a short tick every
+   12px and a taller one every 60. */
+.ruler {
+  background-image:
+    repeating-linear-gradient(to right, rgb(var(--line-strong)) 0 1px, transparent 1px 60px),
+    repeating-linear-gradient(to right, rgb(var(--line)) 0 1px, transparent 1px 12px);
+  background-size: 100% 5px, 100% 3px;
+  background-position: bottom, bottom;
+  background-repeat: no-repeat;
+}
+
+/* The close's film strip: one pass is half the row, so -50% loops clean. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee 70s linear infinite;
+}
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+@layer utilities {
+  .shell {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  /* Stopped outright: the blanket 0.01ms below would spin an infinite
+     loop at full speed instead. */
+  .marquee {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

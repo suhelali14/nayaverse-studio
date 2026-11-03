@@ -1,0 +1,144 @@
+name: Deploy API
+
+# CI green -> build the image once -> push to ghcr.io -> SSH to the server ->
+# pull, start, health-check, roll back if unhealthy.
+#
+# The server is the shared GoDaddy box that runs the clinic stack; the
+# Studio API runs beside it as its own compose project under /srv/studio,
+# held to half a CPU and 512MB. See docs/DEPLOY.md.
+#
+# Secrets (Settings > Secrets and variables > Actions > Secrets), the same
+# four the clinic repository uses:
+#   DEPLOY_HOST       the server's IP or hostname
+#   DEPLOY_USER       deploy
+#   DEPLOY_SSH_KEY    the private key the deploy user accepts
+#   DEPLOY_HOST_KEY   output of: ssh-keyscan -H <server>   (pins the server)
+# Optional: DEPLOY_PORT if SSH is not on 22.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/studio/**'
+      - 'apps/studio-api/**'
+      - 'deploy/**'
+      - 'package-lock.json'
+      - '.github/workflows/deploy-api.yml'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing image to deploy (skips the build), e.g. ghcr.io/owner/nayaverse-studio/api:<sha>'
+        required: false
+        default: ''
+
+concurrency:
+  group: deploy-api
+  cancel-in-progress: false
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  ci:
+    if: github.event.inputs.tag == ''
+    uses: ./.github/workflows/ci.yml
+
+  build:
+    needs: ci
+    if: github.event.inputs.tag == ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.meta.outputs.image }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Image name
+        id: meta
+        run: |
+          repo="$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')"
+          echo "repo=$repo" >> "$GITHUB_OUTPUT"
+          echo "image=${{ env.REGISTRY }}/$repo/api:${{ github.sha }}" >> "$GITHUB_OUTPUT"
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          push: true
+          platforms: linux/amd64
+          tags: |
+            ${{ steps.meta.outputs.image }}
+            ${{ env.REGISTRY }}/${{ steps.meta.outputs.repo }}/api:latest
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ steps.meta.outputs.repo }}/api:buildcache
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ steps.meta.outputs.repo }}/api:buildcache,mode=max
+          provenance: false
+      - name: Summary
+        run: echo "Built \`${{ steps.meta.outputs.image }}\`" >> "$GITHUB_STEP_SUMMARY"
+
+  deploy:
+    needs: build
+    if: always() && (needs.build.result == 'success' || github.event.inputs.tag != '')
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Check the server secrets
+        env:
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          USER: ${{ secrets.DEPLOY_USER }}
+          KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          bad=0
+          [ -n "$HOST" ] || { echo "::error::DEPLOY_HOST is not set (the server's IP)."; bad=1; }
+          [ -n "$USER" ] || { echo "::error::DEPLOY_USER is not set (deploy)."; bad=1; }
+          if [ -z "$KEY" ]; then echo "::error::DEPLOY_SSH_KEY is not set."; bad=1
+          elif ! printf '%s' "$KEY" | grep -q 'BEGIN .*PRIVATE KEY'; then echo "::error::DEPLOY_SSH_KEY is not a private key (the file without .pub)."; bad=1; fi
+          if [ "$bad" = 1 ]; then
+            echo "### Image built; deploy not configured. See docs/DEPLOY.md." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+      - name: Set up SSH
+        env:
+          KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          PORT: ${{ secrets.DEPLOY_PORT }}
+          HOSTKEY: ${{ secrets.DEPLOY_HOST_KEY }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
+          if [ -n "$HOSTKEY" ]; then printf '%s\n' "$HOSTKEY" > ~/.ssh/known_hosts
+          else
+            echo "::warning::DEPLOY_HOST_KEY is unset, so the server's identity is not verified."
+            ssh-keyscan -p "${PORT:-22}" -H "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          fi
+          chmod 600 ~/.ssh/known_hosts
+      - name: Deploy
+        env:
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          USER: ${{ secrets.DEPLOY_USER }}
+          PORT: ${{ secrets.DEPLOY_PORT }}
+          TAG: ${{ github.event.inputs.tag || needs.build.outputs.image }}
+          SHA: ${{ github.sha }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTOR: ${{ github.actor }}
+        run: |
+          ssh_() { ssh -i ~/.ssh/id_deploy -p "${PORT:-22}" -o BatchMode=yes -o ConnectTimeout=15 "$USER@$HOST" "$@"; }
+          # The server's copy of the compose file and scripts, at this commit.
+          ssh_ "test -d /srv/studio/repo || { echo 'Run deploy/server/bootstrap.sh on the server first.'; exit 1; }; \
+                cd /srv/studio/repo && git fetch --quiet origin && git reset --hard --quiet '$SHA'"
+          ssh_ "echo '$GHCR_TOKEN' | docker login ghcr.io -u '$ACTOR' --password-stdin >/dev/null \
+                && IMAGE_TAG='$TAG' bash /srv/studio/repo/deploy/server/deploy.sh; rc=\$?; \
+                docker logout ghcr.io >/dev/null 2>&1; exit \$rc"
+      - name: Summary
+        if: always()
+        run: |
+          echo "### Deploy API" >> "$GITHUB_STEP_SUMMARY"
+          echo "Image: \`${{ github.event.inputs.tag || needs.build.outputs.image }}\` -- **${{ job.status }}**" >> "$GITHUB_STEP_SUMMARY"

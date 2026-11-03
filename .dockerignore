@@ -1,0 +1,13 @@
+# What the API image never needs, and what must never be inside it.
+**/node_modules
+**/dist
+**/.env
+**/.env.*
+!**/.env.example
+.git
+.github
+apps/studio-api/data
+apps/studio-api/uploads
+apps/studio/workspaces
+apps/studio-web
+**/*.log

@@ -1,0 +1,52 @@
+{
+  "slug": "example-bakery",
+  "name": "Kolhapur Bakehouse (example)",
+  "autoPublish": false,
+  "context": {
+    "what": "A single-location bakery in Kolhapur selling sourdough, shrewsbury biscuits and eggless cakes. Walk-in and WhatsApp pre-orders. Two bakers, one counter.",
+    "whatWorks": [
+      "sourdough baked twice daily, 7am and 4pm",
+      "eggless cakes to order with 24 hours notice",
+      "shrewsbury biscuits, the Kolhapur recipe",
+      "we deliver within 4km ourselves"
+    ],
+    "doesNotExist": [
+      "online payment",
+      "nationwide shipping",
+      "a gluten free range"
+    ],
+    "mustNotClaim": [
+      "sugar free",
+      "organic"
+    ],
+    "voice": "warm, plain, a bit proud. no exclamation marks.",
+    "assets": []
+  },
+  "channels": [
+    {
+      "key": "main",
+      "platform": "instagram",
+      "handle": "@kolhapurbakehouse",
+      "promise": "What came out of the oven today, and when to come for it.",
+      "audience": {
+        "who": "someone within 4km who buys bread weekly",
+        "region": "Kolhapur",
+        "jobToBeDone": "know what is fresh and when, without phoning"
+      },
+      "languages": [
+        "mr",
+        "en"
+      ],
+      "beats": [
+        "what is out of the oven today",
+        "how the sourdough is made",
+        "pre-ordering a cake"
+      ],
+      "cadencePerWeek": 3,
+      "rulePacks": [
+        "food"
+      ],
+      "active": true
+    }
+  ]
+}

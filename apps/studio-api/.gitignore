@@ -1,0 +1,13 @@
+# The JSON store. This is the whole database of a local or single-node
+# deployment -- accounts, projects, jobs and the usage ledger. Committing it
+# would publish password hashes, so it never goes in git. See
+# src/lib/store.ts for why the store is files at all.
+data/
+
+# Uploaded footage. Video, sometimes gigabytes of it, belonging to the
+# account that uploaded it. Local-disk storage only, same as
+# apps/clinic-api/uploads and apps/api/uploads.
+uploads/
+
+# Local secrets. JWT_SECRET lives here in development.
+.env

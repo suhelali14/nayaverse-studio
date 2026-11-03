@@ -1,0 +1,44 @@
+name: CI
+
+# Every push and pull request: install from the lockfile, typecheck all
+# three apps, run every test (engine and API, ~1,200 checks), and build
+# both production artifacts. The deploy workflows call this first, so
+# nothing reaches a server that did not pass here.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_call:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install
+        run: npm ci --no-audit --fund=false
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Test
+        run: npm test
+      - name: Build the web app
+        run: npm run build:web
+      - name: Bundle the API
+        run: npm run build:api
+      - name: The bundle starts and answers
+        run: |
+          export NODE_ENV=production JWT_SECRET="$(openssl rand -hex 48)" PORT=4399 \
+                 STUDIO_DATA_DIR="$RUNNER_TEMP/data" STUDIO_UPLOAD_DIR="$RUNNER_TEMP/data/uploads"
+          node apps/studio-api/dist/index.mjs > "$RUNNER_TEMP/api.log" 2>&1 &
+          for i in $(seq 1 20); do curl -fsS http://127.0.0.1:4399/health && exit 0; sleep 1; done
+          echo "::error::The bundled API did not answer /health"; cat "$RUNNER_TEMP/api.log"; exit 1

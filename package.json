@@ -1,0 +1,20 @@
+{
+  "name": "nayaverse-studio",
+  "private": true,
+  "description": "Studio: script, cut, caption and finish vertical video in the browser.",
+  "packageManager": "npm@11.6.2",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev -w apps/studio-api",
+    "dev:web": "npm run dev -w apps/studio-web",
+    "typecheck": "npm run typecheck -w apps/studio && npm run typecheck -w apps/studio-api && npm run typecheck -w apps/studio-web",
+    "test": "npm test -w apps/studio && npm test -w apps/studio-api",
+    "build:web": "npm run build -w apps/studio-web",
+    "build:api": "npm run bundle -w apps/studio-api"
+  }
+}

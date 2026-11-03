@@ -1,0 +1,16 @@
+content/
+dist/
+.env
+workspaces/*/content/
+
+# A workspace's assets are its photographs. This repo is public, and a
+# personal photo or a customer's premises does not belong in it.
+workspaces/*/assets/
+
+# Generated from the Theme schema by scripts/emit-theme-defaults.mts
+web/src/theme-defaults.json
+web/dist/
+
+# render-parity.test.mts writes its output here. Its generated test assets
+# need no rule: workspaces/*/assets/ above already covers them.
+workspaces/*/out-test/

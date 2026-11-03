@@ -1,0 +1,31 @@
+# The Studio API on the shared GoDaddy server, beside the clinic APIs.
+#
+# Run by deploy/server/deploy.sh as project "studio", so it never touches
+# the clinic stack's containers. Bound to 127.0.0.1: only nginx on the same
+# box can reach it, and nginx is what the internet talks to.
+#
+# The limits are deliberate. This box is shared with clinics that run a
+# front desk on it, so Studio is held to half a CPU and 512MB: a burst of
+# Studio traffic slows Studio, never a clinic's queue.
+
+name: studio
+
+services:
+  api:
+    image: ${IMAGE_TAG:?set IMAGE_TAG to the image to run}
+    restart: unless-stopped
+    env_file: /srv/studio/studio-api.env
+    ports:
+      - "127.0.0.1:${STUDIO_PORT:-4310}:4300"
+    volumes:
+      - studio-data:/data
+    cpus: 0.5
+    mem_limit: 512m
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  studio-data:

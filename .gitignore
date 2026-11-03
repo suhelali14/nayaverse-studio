@@ -1,0 +1,41 @@
+# Dependencies and build output
+node_modules/
+dist/
+dist-ssr/
+*.tsbuildinfo
+.turbo/
+coverage/
+
+# Secrets. This repository is public: no key, token or password is ever
+# committed. Each app documents its settings in its own .env.example.
+.env
+.env.*
+!.env.example
+
+# Local data: the API's JSON store, uploaded footage, generated clips.
+apps/studio-api/data/
+apps/studio-api/uploads/
+
+# Workspaces hold a creator's own content and photos. Only the example is
+# in the repository.
+apps/studio/workspaces/*
+!apps/studio/workspaces/example-bakery/
+apps/studio/workspaces/*/assets/
+apps/studio/workspaces/*/content/
+apps/studio/workspaces/*/out-test/
+
+# Internal analysis kept out of the public repository.
+apps/studio/docs/PRICING.md
+apps/studio/scripts/unit-economics.mjs
+
+# Editors and OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+
+# A design tool's local cache and settings: machine state, with local paths.
+**/.impeccable/hook.cache.json
+**/.impeccable/config.local.json
+**/.impeccable/review/

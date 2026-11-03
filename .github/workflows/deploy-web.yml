@@ -1,0 +1,80 @@
+name: Deploy web
+
+# CI green -> build the site with the production API's address baked in ->
+# deploy the prebuilt output to Vercel -> check the build really points at
+# that API rather than at a development fallback.
+#
+# Secrets:   VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID
+# Variable:  STUDIO_API_URL   e.g. https://api.nayaverse.studio
+#            (a Variable, not a Secret: it is public and ends up in the site)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/studio/**'
+      - 'apps/studio-web/**'
+      - 'package-lock.json'
+      - '.github/workflows/deploy-web.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-web
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  deploy:
+    needs: ci
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Check the configuration
+        env:
+          TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          ORG: ${{ secrets.VERCEL_ORG_ID }}
+          PROJECT: ${{ secrets.VERCEL_PROJECT_ID }}
+          API: ${{ vars.STUDIO_API_URL }}
+        run: |
+          bad=0
+          [ -n "$TOKEN" ] || { echo "::error::VERCEL_TOKEN is not set."; bad=1; }
+          [ -n "$ORG" ] || { echo "::error::VERCEL_ORG_ID is not set."; bad=1; }
+          [ -n "$PROJECT" ] || { echo "::error::VERCEL_PROJECT_ID is not set."; bad=1; }
+          case "$API" in https://*) ;; *) echo "::error::The STUDIO_API_URL variable must be the API's https address, e.g. https://api.nayaverse.studio"; bad=1 ;; esac
+          exit $bad
+      - name: Install
+        run: npm ci --no-audit --fund=false
+      - name: Build and deploy
+        id: vercel
+        working-directory: apps/studio-web
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VITE_API_URL: ${{ vars.STUDIO_API_URL }}
+        run: |
+          echo "VITE_API_URL=$VITE_API_URL" > .env.production
+          npx --yes vercel@63 pull --yes --environment=production --token "$VERCEL_TOKEN"
+          npx --yes vercel@63 build --prod --token "$VERCEL_TOKEN" --yes
+          url="$(npx --yes vercel@63 deploy --prebuilt --prod --token "$VERCEL_TOKEN" --yes | tail -n1 | tr -d '\r')"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Deployed to $url" >> "$GITHUB_STEP_SUMMARY"
+      - name: The site points at the production API
+        working-directory: apps/studio-web
+        env:
+          API: ${{ vars.STUDIO_API_URL }}
+        run: |
+          out=.vercel/output/static
+          [ -d "$out" ] || out=dist
+          if ! grep -rqF "$API" "$out"; then
+            echo "::error::The built site does not contain $API: it would call /api on Vercel and get 404s."
+            exit 1
+          fi
+          echo "The site calls $API."

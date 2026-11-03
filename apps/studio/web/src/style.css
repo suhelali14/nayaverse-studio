@@ -1,0 +1,494 @@
+/*
+ * A desk tool, not a brochure.
+ *
+ * The person using this is reviewing their own face on a 20-second reel
+ * and will do it fifty times a week. So: the picture is the brightest
+ * thing on screen and everything else recedes, the ground is the same
+ * near-black the reel is composited on so the preview is not judged
+ * against a different surround, and nothing animates except the playhead.
+ */
+
+:root {
+  --ground: #0c0e13;
+  --panel: #14171f;
+  --panel-2: #1a1e28;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --ink: #eef1f6;
+  --ink-2: #a8b0bf;
+  --ink-3: #6b7484;
+  --accent: #4d8dff;
+  --accent-ink: #0a1020;
+  --danger: #ff6b6b;
+  --clip-video: #2a4a6b;
+  --clip-photo: #4a3a6b;
+  --clip-asset: #2a5a52;
+  --clip-solid: #2b3140;
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 14px/1.5 'Inter', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* --- bar ---------------------------------------------------------------- */
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  padding-top: max(10px, env(safe-area-inset-top));
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brand .mark {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, var(--accent), #8b5cf6);
+}
+
+.brand .sub {
+  color: var(--ink-3);
+  font-weight: 400;
+}
+
+.bar-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* --- buttons ------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--panel-2);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) {
+  background: #222734;
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: transparent;
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: #639bff;
+}
+
+.btn.small {
+  min-height: 30px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.btn.icon {
+  min-width: 40px;
+  padding: 0 8px;
+  font-family: ui-monospace, monospace;
+}
+
+.btn.danger {
+  color: var(--danger);
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+/* Visible focus, and only for keyboards -- a mouse click must not leave a
+   ring behind, which is exactly why blanket outline:none gets written. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --- notices ------------------------------------------------------------ */
+
+.note {
+  margin: 0;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(77, 141, 255, 0.08);
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.note.bad {
+  background: rgba(255, 107, 107, 0.1);
+  color: #ffc4c4;
+}
+
+/* --- work area ---------------------------------------------------------- */
+
+.work {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.stage {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 16px;
+  background:
+    radial-gradient(60% 60% at 50% 40%, rgba(77, 141, 255, 0.05), transparent 70%),
+    var(--ground);
+}
+
+#preview {
+  max-width: 100%;
+  max-height: 100%;
+  /* The reel's own shape, so nothing about the preview's framing is a
+     surprise once it is posted. */
+  aspect-ratio: 9 / 16;
+  height: 100%;
+  width: auto;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--ground);
+  /* Nearest-neighbour would alias the downscale; the browser's own filter
+     is closer to what a phone screen does with the same file. */
+  image-rendering: auto;
+}
+
+.stats {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 14px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(10, 12, 16, 0.82);
+  backdrop-filter: blur(8px);
+  color: var(--ink-3);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.stats b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* --- inspector ---------------------------------------------------------- */
+
+.side {
+  width: 300px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  padding: 16px;
+  border-left: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.side h2 {
+  margin: 20px 0 8px;
+  color: var(--ink-3);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.side h2:first-child {
+  margin-top: 0;
+}
+
+.field {
+  display: block;
+}
+
+.field > span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink-2);
+  font-size: 12px;
+}
+
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--ground);
+  color: var(--ink);
+  /* 16px on touch: Safari zooms the whole viewport for anything smaller
+     and does not zoom back out. */
+  font: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+
+textarea:disabled {
+  opacity: 0.45;
+}
+
+.order {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.order .btn {
+  flex: 1;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  margin: 0;
+  font-size: 12px;
+}
+
+.keys dt {
+  color: var(--ink);
+  font-family: ui-monospace, monospace;
+  white-space: nowrap;
+}
+
+.keys dd {
+  margin: 0;
+  color: var(--ink-3);
+}
+
+.prose {
+  margin: 0 0 10px;
+  color: var(--ink-3);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.prose code {
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: var(--panel-2);
+  font-size: 11px;
+}
+
+/* --- transport ---------------------------------------------------------- */
+
+.transport {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.clock {
+  margin-left: 6px;
+  color: var(--ink-2);
+  font-family: ui-monospace, monospace;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- the strip ---------------------------------------------------------- */
+
+.strip {
+  position: relative;
+  display: flex;
+  height: 60px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--ground);
+  overflow: hidden;
+  /* The scrub surface. Without this a drag selects the labels instead. */
+  touch-action: none;
+  user-select: none;
+  cursor: col-resize;
+}
+
+.clip {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+  padding: 0 10px;
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.clip.kind-clip {
+  background: var(--clip-video);
+}
+.clip.kind-photo {
+  background: var(--clip-photo);
+}
+.clip.kind-asset {
+  background: var(--clip-asset);
+}
+.clip.kind-solid {
+  background: var(--clip-solid);
+}
+
+/* Selection is an inset ring rather than a border, so selecting a shot
+   cannot change its width and shift every shot after it. */
+.clip.selected {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.clip-label {
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clip-time {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Trim handles. 10px wide, which is small on screen and generous enough
+   to hit -- a 3px handle is the classic reason trimming feels broken. */
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  cursor: ew-resize;
+}
+
+.handle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  border-radius: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.handle:hover::after {
+  background: var(--accent);
+}
+
+.handle-in {
+  left: 0;
+}
+
+.handle-out {
+  right: 0;
+}
+
+.playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  margin-left: -1px;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+}
+
+.warn {
+  margin: 8px 0 0;
+  color: #ffc4c4;
+  font-size: 12px;
+}
+
+/* --- narrow screens ----------------------------------------------------- */
+
+@media (max-width: 860px) {
+  body {
+    overflow: auto;
+  }
+  .work {
+    flex-direction: column;
+  }
+  .side {
+    width: 100%;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  #preview {
+    height: auto;
+    width: 100%;
+    max-height: 56vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@nayaverse/studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-first content studio: decides what to post, builds it, waits for approval, publishes.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "studio": "tsx src/cli.ts",
+    "emit:theme": "tsx scripts/emit-theme-defaults.mts",
+    "test": "tsx test/pipeline.test.mts && tsx test/timeline.test.mts && tsx test/editor-core.test.mts && tsx test/two-renderers.test.mts && tsx test/decoder.test.mts && tsx test/subtitles.test.mts && tsx test/dubbing.test.mts && tsx test/align.test.mts && tsx test/scenes.test.mts && tsx test/director.test.mts && tsx test/insights.test.mts && tsx test/polish.test.mts && tsx test/render-parity.test.mts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0",
+    "ffmpeg-static": "^5.2.0",
+    "mediabunny": "^1.65.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^8.2.2"
+  }
+}

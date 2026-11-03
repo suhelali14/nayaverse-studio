@@ -1,0 +1,7 @@
+# Unix line endings in the repository and in every checkout: the server
+# scripts run on Linux, where a carriage return breaks them.
+* text=auto eol=lf
+*.sh text eol=lf
+*.jpg binary
+*.png binary
+*.mp4 binary

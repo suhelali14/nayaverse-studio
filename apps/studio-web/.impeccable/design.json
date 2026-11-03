@@ -1,0 +1,816 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-02T22:22:23.455Z",
+  "title": "Design System: Studio",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Ground",
+        "canonical": "rgb(var(--ground))",
+        "cssVariable": "--ground",
+        "light": "rgb(255 255 255)",
+        "dark": "rgb(12 12 13)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 89.9)",
+          "oklch(26.4% 0.000 89.9)",
+          "oklch(37.9% 0.000 89.9)",
+          "oklch(49.3% 0.000 89.9)",
+          "oklch(60.7% 0.000 89.9)",
+          "oklch(72.1% 0.000 89.9)",
+          "oklch(83.6% 0.000 89.9)",
+          "oklch(95.0% 0.000 89.9)"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel",
+        "canonical": "rgb(var(--panel))",
+        "cssVariable": "--panel",
+        "light": "rgb(255 255 255)",
+        "dark": "rgb(21 21 23)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 89.9)",
+          "oklch(26.4% 0.000 89.9)",
+          "oklch(37.9% 0.000 89.9)",
+          "oklch(49.3% 0.000 89.9)",
+          "oklch(60.7% 0.000 89.9)",
+          "oklch(72.1% 0.000 89.9)",
+          "oklch(83.6% 0.000 89.9)",
+          "oklch(95.0% 0.000 89.9)"
+        ]
+      },
+      "panel-2": {
+        "role": "neutral",
+        "displayName": "Panel Recess",
+        "canonical": "rgb(var(--panel-2))",
+        "cssVariable": "--panel-2",
+        "light": "rgb(246 246 245)",
+        "dark": "rgb(29 29 32)",
+        "tonalRamp": [
+          "oklch(15.0% 0.001 106.4)",
+          "oklch(26.4% 0.001 106.4)",
+          "oklch(37.9% 0.001 106.4)",
+          "oklch(49.3% 0.001 106.4)",
+          "oklch(60.7% 0.001 106.4)",
+          "oklch(72.1% 0.001 106.4)",
+          "oklch(83.6% 0.001 106.4)",
+          "oklch(95.0% 0.000 106.4)"
+        ]
+      },
+      "panel-3": {
+        "role": "neutral",
+        "displayName": "Panel Pressed",
+        "canonical": "rgb(var(--panel-3))",
+        "cssVariable": "--panel-3",
+        "light": "rgb(238 238 236)",
+        "dark": "rgb(38 38 42)",
+        "tonalRamp": [
+          "oklch(15.0% 0.001 106.5)",
+          "oklch(26.4% 0.002 106.5)",
+          "oklch(37.9% 0.003 106.5)",
+          "oklch(49.3% 0.003 106.5)",
+          "oklch(60.7% 0.003 106.5)",
+          "oklch(72.1% 0.002 106.5)",
+          "oklch(83.6% 0.001 106.5)",
+          "oklch(95.0% 0.000 106.5)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgb(var(--line))",
+        "cssVariable": "--line",
+        "light": "rgb(232 232 230)",
+        "dark": "rgb(37 37 41)",
+        "tonalRamp": [
+          "oklch(15.0% 0.001 106.5)",
+          "oklch(26.4% 0.002 106.5)",
+          "oklch(37.9% 0.003 106.5)",
+          "oklch(49.3% 0.003 106.5)",
+          "oklch(60.7% 0.003 106.5)",
+          "oklch(72.1% 0.002 106.5)",
+          "oklch(83.6% 0.001 106.5)",
+          "oklch(95.0% 0.000 106.5)"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "rgb(var(--line-strong))",
+        "cssVariable": "--line-strong",
+        "light": "rgb(212 212 209)",
+        "dark": "rgb(56 56 62)",
+        "tonalRamp": [
+          "oklch(15.0% 0.002 106.5)",
+          "oklch(26.4% 0.003 106.5)",
+          "oklch(37.9% 0.004 106.5)",
+          "oklch(49.3% 0.004 106.5)",
+          "oklch(60.7% 0.004 106.5)",
+          "oklch(72.1% 0.003 106.5)",
+          "oklch(83.6% 0.002 106.5)",
+          "oklch(95.0% 0.001 106.5)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "rgb(var(--ink))",
+        "cssVariable": "--ink",
+        "light": "rgb(20 20 20)",
+        "dark": "rgb(236 236 238)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 89.9)",
+          "oklch(26.4% 0.000 89.9)",
+          "oklch(37.9% 0.000 89.9)",
+          "oklch(49.3% 0.000 89.9)",
+          "oklch(60.7% 0.000 89.9)",
+          "oklch(72.1% 0.000 89.9)",
+          "oklch(83.6% 0.000 89.9)",
+          "oklch(95.0% 0.000 89.9)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Body",
+        "canonical": "rgb(var(--ink-2))",
+        "cssVariable": "--ink-2",
+        "light": "rgb(74 74 74)",
+        "dark": "rgb(174 174 181)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 89.9)",
+          "oklch(26.4% 0.000 89.9)",
+          "oklch(37.9% 0.000 89.9)",
+          "oklch(49.3% 0.000 89.9)",
+          "oklch(60.7% 0.000 89.9)",
+          "oklch(72.1% 0.000 89.9)",
+          "oklch(83.6% 0.000 89.9)",
+          "oklch(95.0% 0.000 89.9)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink Quiet",
+        "canonical": "rgb(var(--ink-3))",
+        "cssVariable": "--ink-3",
+        "light": "rgb(110 110 110)",
+        "dark": "rgb(136 136 144)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 89.9)",
+          "oklch(26.4% 0.000 89.9)",
+          "oklch(37.9% 0.000 89.9)",
+          "oklch(49.3% 0.000 89.9)",
+          "oklch(60.7% 0.000 89.9)",
+          "oklch(72.1% 0.000 89.9)",
+          "oklch(83.6% 0.000 89.9)",
+          "oklch(95.0% 0.000 89.9)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Studio Red",
+        "canonical": "rgb(var(--accent))",
+        "cssVariable": "--accent",
+        "light": "rgb(214 39 24)",
+        "dark": "rgb(214 39 24)",
+        "tonalRamp": [
+          "oklch(15.0% 0.088 29.9)",
+          "oklch(26.4% 0.156 29.9)",
+          "oklch(37.9% 0.211 29.9)",
+          "oklch(49.3% 0.211 29.9)",
+          "oklch(60.7% 0.211 29.9)",
+          "oklch(72.1% 0.164 29.9)",
+          "oklch(83.6% 0.097 29.9)",
+          "oklch(95.0% 0.029 29.9)"
+        ]
+      },
+      "accent-ink": {
+        "role": "primary",
+        "displayName": "Red Ink",
+        "canonical": "rgb(var(--accent-ink))",
+        "cssVariable": "--accent-ink",
+        "light": "rgb(255 255 255)",
+        "dark": "rgb(255 255 255)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 89.9)",
+          "oklch(26.4% 0.000 89.9)",
+          "oklch(37.9% 0.000 89.9)",
+          "oklch(49.3% 0.000 89.9)",
+          "oklch(60.7% 0.000 89.9)",
+          "oklch(72.1% 0.000 89.9)",
+          "oklch(83.6% 0.000 89.9)",
+          "oklch(95.0% 0.000 89.9)"
+        ]
+      },
+      "accent-soft": {
+        "role": "primary",
+        "displayName": "Red Wash",
+        "canonical": "rgb(var(--accent-soft))",
+        "cssVariable": "--accent-soft",
+        "light": "rgb(253 236 234)",
+        "dark": "rgb(58 24 21)",
+        "tonalRamp": [
+          "oklch(15.0% 0.008 25.6)",
+          "oklch(26.4% 0.014 25.6)",
+          "oklch(37.9% 0.019 25.6)",
+          "oklch(49.3% 0.019 25.6)",
+          "oklch(60.7% 0.019 25.6)",
+          "oklch(72.1% 0.015 25.6)",
+          "oklch(83.6% 0.009 25.6)",
+          "oklch(95.0% 0.003 25.6)"
+        ]
+      },
+      "accent-deep": {
+        "role": "primary",
+        "displayName": "Red Deep",
+        "canonical": "rgb(var(--accent-deep))",
+        "cssVariable": "--accent-deep",
+        "light": "rgb(184 30 17)",
+        "dark": "rgb(232 56 40)",
+        "tonalRamp": [
+          "oklch(15.0% 0.080 29.9)",
+          "oklch(26.4% 0.140 29.9)",
+          "oklch(37.9% 0.190 29.9)",
+          "oklch(49.3% 0.190 29.9)",
+          "oklch(60.7% 0.190 29.9)",
+          "oklch(72.1% 0.148 29.9)",
+          "oklch(83.6% 0.087 29.9)",
+          "oklch(95.0% 0.027 29.9)"
+        ]
+      },
+      "select": {
+        "role": "primary",
+        "displayName": "Select",
+        "canonical": "rgb(var(--select))",
+        "cssVariable": "--select",
+        "light": "rgb(214 39 24)",
+        "dark": "rgb(240 74 58)",
+        "tonalRamp": [
+          "oklch(15.0% 0.088 29.9)",
+          "oklch(26.4% 0.156 29.9)",
+          "oklch(37.9% 0.211 29.9)",
+          "oklch(49.3% 0.211 29.9)",
+          "oklch(60.7% 0.211 29.9)",
+          "oklch(72.1% 0.164 29.9)",
+          "oklch(83.6% 0.097 29.9)",
+          "oklch(95.0% 0.029 29.9)"
+        ]
+      },
+      "monitor": {
+        "role": "neutral",
+        "displayName": "Monitor",
+        "canonical": "rgb(var(--monitor))",
+        "cssVariable": "--monitor",
+        "light": "rgb(17 17 18)",
+        "dark": "rgb(8 8 9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.001 286.2)",
+          "oklch(26.4% 0.002 286.2)",
+          "oklch(37.9% 0.002 286.2)",
+          "oklch(49.3% 0.002 286.2)",
+          "oklch(60.7% 0.002 286.2)",
+          "oklch(72.1% 0.002 286.2)",
+          "oklch(83.6% 0.001 286.2)",
+          "oklch(95.0% 0.000 286.2)"
+        ]
+      },
+      "good": {
+        "role": "status",
+        "displayName": "Good",
+        "canonical": "rgb(var(--good))",
+        "cssVariable": "--good",
+        "light": "rgb(22 120 72)",
+        "dark": "rgb(74 196 126)",
+        "tonalRamp": [
+          "oklch(15.0% 0.048 155.9)",
+          "oklch(26.4% 0.085 155.9)",
+          "oklch(37.9% 0.115 155.9)",
+          "oklch(49.3% 0.115 155.9)",
+          "oklch(60.7% 0.115 155.9)",
+          "oklch(72.1% 0.090 155.9)",
+          "oklch(83.6% 0.053 155.9)",
+          "oklch(95.0% 0.016 155.9)"
+        ]
+      },
+      "good-soft": {
+        "role": "status",
+        "displayName": "Good Wash",
+        "canonical": "rgb(var(--good-soft))",
+        "cssVariable": "--good-soft",
+        "light": "rgb(229 244 235)",
+        "dark": "rgb(18 46 31)",
+        "tonalRamp": [
+          "oklch(15.0% 0.008 159.7)",
+          "oklch(26.4% 0.015 159.7)",
+          "oklch(37.9% 0.020 159.7)",
+          "oklch(49.3% 0.020 159.7)",
+          "oklch(60.7% 0.020 159.7)",
+          "oklch(72.1% 0.015 159.7)",
+          "oklch(83.6% 0.009 159.7)",
+          "oklch(95.0% 0.003 159.7)"
+        ]
+      },
+      "warn": {
+        "role": "status",
+        "displayName": "Warn",
+        "canonical": "rgb(var(--warn))",
+        "cssVariable": "--warn",
+        "light": "rgb(150 96 0)",
+        "dark": "rgb(232 176 52)",
+        "tonalRamp": [
+          "oklch(15.0% 0.048 71.4)",
+          "oklch(26.4% 0.085 71.4)",
+          "oklch(37.9% 0.115 71.4)",
+          "oklch(49.3% 0.115 71.4)",
+          "oklch(60.7% 0.115 71.4)",
+          "oklch(72.1% 0.090 71.4)",
+          "oklch(83.6% 0.053 71.4)",
+          "oklch(95.0% 0.016 71.4)"
+        ]
+      },
+      "warn-soft": {
+        "role": "status",
+        "displayName": "Warn Wash",
+        "canonical": "rgb(var(--warn-soft))",
+        "cssVariable": "--warn-soft",
+        "light": "rgb(255 244 214)",
+        "dark": "rgb(50 39 14)",
+        "tonalRamp": [
+          "oklch(15.0% 0.017 90.2)",
+          "oklch(26.4% 0.030 90.2)",
+          "oklch(37.9% 0.041 90.2)",
+          "oklch(49.3% 0.041 90.2)",
+          "oklch(60.7% 0.041 90.2)",
+          "oklch(72.1% 0.032 90.2)",
+          "oklch(83.6% 0.019 90.2)",
+          "oklch(95.0% 0.006 90.2)"
+        ]
+      },
+      "bad": {
+        "role": "status",
+        "displayName": "Bad",
+        "canonical": "rgb(var(--bad))",
+        "cssVariable": "--bad",
+        "light": "rgb(190 36 24)",
+        "dark": "rgb(255 112 98)",
+        "tonalRamp": [
+          "oklch(15.0% 0.080 29.6)",
+          "oklch(26.4% 0.141 29.6)",
+          "oklch(37.9% 0.191 29.6)",
+          "oklch(49.3% 0.191 29.6)",
+          "oklch(60.7% 0.191 29.6)",
+          "oklch(72.1% 0.149 29.6)",
+          "oklch(83.6% 0.088 29.6)",
+          "oklch(95.0% 0.027 29.6)"
+        ]
+      },
+      "bad-soft": {
+        "role": "status",
+        "displayName": "Bad Wash",
+        "canonical": "rgb(var(--bad-soft))",
+        "cssVariable": "--bad-soft",
+        "light": "rgb(253 236 234)",
+        "dark": "rgb(56 22 20)",
+        "tonalRamp": [
+          "oklch(15.0% 0.008 25.6)",
+          "oklch(26.4% 0.014 25.6)",
+          "oklch(37.9% 0.019 25.6)",
+          "oklch(49.3% 0.019 25.6)",
+          "oklch(60.7% 0.019 25.6)",
+          "oklch(72.1% 0.015 25.6)",
+          "oklch(83.6% 0.009 25.6)",
+          "oklch(95.0% 0.003 25.6)"
+        ]
+      },
+      "kind-clip": {
+        "role": "data",
+        "displayName": "Kind Clip (video)",
+        "canonical": "rgb(var(--kind-clip))",
+        "cssVariable": "--kind-clip",
+        "light": "rgb(46 92 150)",
+        "dark": "rgb(44 88 146)",
+        "tonalRamp": [
+          "oklch(15.0% 0.045 255.3)",
+          "oklch(26.4% 0.079 255.3)",
+          "oklch(37.9% 0.107 255.3)",
+          "oklch(49.3% 0.107 255.3)",
+          "oklch(60.7% 0.107 255.3)",
+          "oklch(72.1% 0.084 255.3)",
+          "oklch(83.6% 0.049 255.3)",
+          "oklch(95.0% 0.015 255.3)"
+        ]
+      },
+      "kind-photo": {
+        "role": "data",
+        "displayName": "Kind Photo",
+        "canonical": "rgb(var(--kind-photo))",
+        "cssVariable": "--kind-photo",
+        "light": "rgb(34 112 101)",
+        "dark": "rgb(30 104 94)",
+        "tonalRamp": [
+          "oklch(15.0% 0.032 181.9)",
+          "oklch(26.4% 0.057 181.9)",
+          "oklch(37.9% 0.076 181.9)",
+          "oklch(49.3% 0.076 181.9)",
+          "oklch(60.7% 0.076 181.9)",
+          "oklch(72.1% 0.060 181.9)",
+          "oklch(83.6% 0.035 181.9)",
+          "oklch(95.0% 0.011 181.9)"
+        ]
+      },
+      "kind-asset": {
+        "role": "data",
+        "displayName": "Kind Asset (image)",
+        "canonical": "rgb(var(--kind-asset))",
+        "cssVariable": "--kind-asset",
+        "light": "rgb(98 78 160)",
+        "dark": "rgb(92 74 152)",
+        "tonalRamp": [
+          "oklch(15.0% 0.054 292.2)",
+          "oklch(26.4% 0.095 292.2)",
+          "oklch(37.9% 0.128 292.2)",
+          "oklch(49.3% 0.128 292.2)",
+          "oklch(60.7% 0.128 292.2)",
+          "oklch(72.1% 0.100 292.2)",
+          "oklch(83.6% 0.059 292.2)",
+          "oklch(95.0% 0.018 292.2)"
+        ]
+      },
+      "kind-solid": {
+        "role": "data",
+        "displayName": "Kind Solid (text card)",
+        "canonical": "rgb(var(--kind-solid))",
+        "cssVariable": "--kind-solid",
+        "light": "rgb(110 64 130)",
+        "dark": "rgb(96 58 116)",
+        "tonalRamp": [
+          "oklch(15.0% 0.048 314.8)",
+          "oklch(26.4% 0.085 314.8)",
+          "oklch(37.9% 0.115 314.8)",
+          "oklch(49.3% 0.115 314.8)",
+          "oklch(60.7% 0.115 314.8)",
+          "oklch(72.1% 0.090 314.8)",
+          "oklch(83.6% 0.053 314.8)",
+          "oklch(95.0% 0.016 314.8)"
+        ]
+      },
+      "cue": {
+        "role": "data",
+        "displayName": "Cue Amber",
+        "canonical": "rgb(var(--cue))",
+        "cssVariable": "--cue",
+        "light": "rgb(214 160 40)",
+        "dark": "rgb(200 150 38)",
+        "tonalRamp": [
+          "oklch(15.0% 0.059 82.0)",
+          "oklch(26.4% 0.104 82.0)",
+          "oklch(37.9% 0.141 82.0)",
+          "oklch(49.3% 0.141 82.0)",
+          "oklch(60.7% 0.141 82.0)",
+          "oklch(72.1% 0.110 82.0)",
+          "oklch(83.6% 0.065 82.0)",
+          "oklch(95.0% 0.020 82.0)"
+        ]
+      },
+      "cue-ink": {
+        "role": "data",
+        "displayName": "Cue Ink",
+        "canonical": "rgb(var(--cue-ink))",
+        "cssVariable": "--cue-ink",
+        "light": "rgb(28 22 8)",
+        "dark": "rgb(24 18 6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.011 87.0)",
+          "oklch(26.4% 0.020 87.0)",
+          "oklch(37.9% 0.027 87.0)",
+          "oklch(49.3% 0.027 87.0)",
+          "oklch(60.7% 0.027 87.0)",
+          "oklch(72.1% 0.021 87.0)",
+          "oklch(83.6% 0.012 87.0)",
+          "oklch(95.0% 0.004 87.0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Website hero h1 only: 700, 3rem below sm, 3.75rem from sm, -0.028em (.display)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Website section h2 and the dark close: 700, 2.25rem / 3rem, -0.028em."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Website feature-row h3 and large figures (Insights, plan prices): 600, -0.02em. App page titles are 0.9375rem 600."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text, max 58ch; website ledes 1.125rem relaxed."
+      },
+      "body-ui": {
+        "displayName": "Body UI",
+        "purpose": "Buttons, nav, field labels, panel heads: 0.8125rem, 500-600."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Hints, metadata, inspector rows, timeline headers, xs buttons: 0.75rem."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Badges, tool-rail labels, ruler numbers, cue chips: 0.6875rem."
+      },
+      "figures": {
+        "displayName": "Tabular Figures",
+        "purpose": "Every timecode, duration, count, percentage and price; global on <time> and .tabular."
+      }
+    },
+    "fontScale": [
+      {
+        "name": "2xs",
+        "value": "0.6875rem / 1rem"
+      },
+      {
+        "name": "xs",
+        "value": "0.75rem / 1.05rem"
+      },
+      {
+        "name": "sm",
+        "value": "0.8125rem / 1.25rem"
+      },
+      {
+        "name": "base",
+        "value": "0.9375rem / 1.45rem"
+      },
+      {
+        "name": "lg",
+        "value": "1.125rem / 1.6rem"
+      },
+      {
+        "name": "xl",
+        "value": "1.375rem / 1.8rem"
+      },
+      {
+        "name": "2xl",
+        "value": "1.75rem / 2.15rem"
+      },
+      {
+        "name": "3xl",
+        "value": "2.25rem / 2.6rem"
+      },
+      {
+        "name": "4xl",
+        "value": "3rem / 3.3rem"
+      },
+      {
+        "name": "5xl",
+        "value": "3.75rem / 4rem"
+      }
+    ],
+    "shadows": [
+      {
+        "name": "float",
+        "value": "0 8px 24px -6px rgb(0 0 0 / 0.28), 0 2px 6px -2px rgb(0 0 0 / 0.2)",
+        "purpose": "Toasts, the mobile nav drawer, menus: things above the page."
+      },
+      {
+        "name": "frame",
+        "value": "0 30px 60px -20px rgb(20 20 20 / 0.35), 0 12px 24px -12px rgb(20 20 20 / 0.25)",
+        "purpose": "Product captures on the website and auth screens."
+      }
+    ],
+    "focus": [
+      {
+        "name": "focus-ring",
+        "value": "outline: 2px solid rgb(var(--select)); outline-offset: 2px",
+        "purpose": "Global :focus-visible; a mouse click leaves none."
+      },
+      {
+        "name": "field-focus",
+        "value": "border-color: rgb(var(--select)); box-shadow: 0 0 0 2px rgb(var(--select) / 0.25)",
+        "purpose": "Inputs, textareas and selects on focus."
+      },
+      {
+        "name": "selection",
+        "value": "::selection background rgb(var(--select) / 0.28)",
+        "purpose": "Text selection in both rooms."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-colour",
+        "value": "transition: colors 150ms",
+        "purpose": "Every hover, press and selection change."
+      },
+      {
+        "name": "meter-fill",
+        "value": "transition: width 500ms",
+        "purpose": "Usage and progress meters."
+      },
+      {
+        "name": "skeleton-sweep",
+        "value": "1.4s linear infinite translateX",
+        "purpose": "Loading placeholders sweep rather than pulse."
+      },
+      {
+        "name": "working-dot",
+        "value": "animate-pulse on the tool-rail dot",
+        "purpose": "A tool with a job running (transcription, dub)."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation and transition 0.01ms; smooth scroll off",
+        "purpose": "Global prefers-reduced-motion override."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px",
+        "note": "Wider gutters and bands; hero type steps up."
+      },
+      {
+        "name": "md",
+        "value": "768px",
+        "note": "Website header shows inline nav; below it the 44px menu."
+      },
+      {
+        "name": "lg",
+        "value": "1024px",
+        "note": "App sidebar appears; the editor becomes rail / panel / viewer / inspector over the timeline."
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ],
+    "layout": {
+      "content": "1200px",
+      "appContent": "1280px",
+      "prose": "58ch",
+      "siteHeaderHeight": "64px",
+      "appHeaderHeight": "56px",
+      "appSidebar": "240px",
+      "editorTopBar": "48px",
+      "editorColumns": "64px rail, 312px panel, fluid viewer, 288px inspector",
+      "scrollPaddingTop": "80px",
+      "touchTarget": "44px",
+      "coarseInputFontSize": "16px"
+    },
+    "rooms": {
+      "light": ":root -- the website, pricing, sign-in and sign-up",
+      "dark": ":root[data-theme='dark'] -- every /app route, set by RouteTheme in src/App.tsx before paint"
+    },
+    "reel": {
+      "note": "The reel is the creator's output, not app chrome. Captions keep the engine treatment (outlined white over footage, a band over screenshots), set in Inter. Decided by the user 2026-11-02.",
+      "source": "apps/studio/src/domain/workspace.ts -> src/editor/theme-defaults.json"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Studio red, semibold; the one main action of a view.",
+      "html": "<button class=\"ds-btn-primary\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14\"/><path d=\"M5 12h14\"/></svg>New reel</button>",
+      "css": ".ds-btn-primary { font-family: \"Archivo Variable\", Mukta, system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 16px; font-size: 0.8125rem; line-height: 1.25rem; border-radius: 6px; border: 0; cursor: pointer; white-space: nowrap; transition: color 150ms, background-color 150ms, border-color 150ms; font-weight: 600; background: rgb(var(--accent)); color: rgb(var(--accent-ink)); } .ds-btn-primary:hover, .ds-btn-primary:active { background: rgb(var(--accent-deep)); } .ds-btn-primary:focus-visible { outline: 2px solid rgb(var(--select)); outline-offset: 2px; } .ds-btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "The default button: recessed fill with a strong hairline, for everyday actions.",
+      "html": "<button class=\"ds-btn-secondary\">Transcribe speech</button>",
+      "css": ".ds-btn-secondary { font-family: \"Archivo Variable\", Mukta, system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 16px; font-size: 0.8125rem; line-height: 1.25rem; border-radius: 6px; border: 0; cursor: pointer; white-space: nowrap; transition: color 150ms, background-color 150ms, border-color 150ms; font-weight: 500; background: rgb(var(--panel-2)); color: rgb(var(--ink)); border: 1px solid rgb(var(--line-strong)); } .ds-btn-secondary:hover { background: rgb(var(--panel-3)); } .ds-btn-secondary:focus-visible { outline: 2px solid rgb(var(--select)); outline-offset: 2px; } .ds-btn-secondary:disabled { opacity: 0.45; cursor: not-allowed; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "No fill; toolbars, Sign in, Keep, and every icon button.",
+      "html": "<button class=\"ds-btn-ghost\">Sign in</button>",
+      "css": ".ds-btn-ghost { font-family: \"Archivo Variable\", Mukta, system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 16px; font-size: 0.8125rem; line-height: 1.25rem; border-radius: 6px; border: 0; cursor: pointer; white-space: nowrap; transition: color 150ms, background-color 150ms, border-color 150ms; font-weight: 500; background: transparent; color: rgb(var(--ink-2)); } .ds-btn-ghost:hover { background: rgb(var(--panel-2)); color: rgb(var(--ink)); } .ds-btn-ghost:focus-visible { outline: 2px solid rgb(var(--select)); outline-offset: 2px; } .ds-btn-ghost:disabled { opacity: 0.45; cursor: not-allowed; }"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Destructive actions, always after a confirm step.",
+      "html": "<button class=\"ds-btn-danger\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 6h18\"/><path d=\"M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6\"/><path d=\"M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2\"/></svg>Delete</button>",
+      "css": ".ds-btn-danger { font-family: \"Archivo Variable\", Mukta, system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 16px; font-size: 0.8125rem; line-height: 1.25rem; border-radius: 6px; border: 0; cursor: pointer; white-space: nowrap; transition: color 150ms, background-color 150ms, border-color 150ms; height: 28px; padding: 0 10px; font-size: 0.75rem; line-height: 1.05rem; font-weight: 500; background: transparent; color: rgb(var(--bad)); border: 1px solid rgb(var(--bad) / 0.4); } .ds-btn-danger:hover { background: rgb(var(--bad-soft)); } .ds-btn-danger:focus-visible { outline: 2px solid rgb(var(--select)); outline-offset: 2px; } .ds-btn-danger:disabled { opacity: 0.45; cursor: not-allowed; }"
+    },
+    {
+      "name": "Inverse Button",
+      "kind": "button",
+      "refersTo": "button-inverse",
+      "description": "Ink fill on the light website; the second call beside a red one.",
+      "html": "<button class=\"ds-btn-inverse\">Get started</button>",
+      "css": ".ds-btn-inverse { font-family: \"Archivo Variable\", Mukta, system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 16px; font-size: 0.8125rem; line-height: 1.25rem; border-radius: 6px; border: 0; cursor: pointer; white-space: nowrap; transition: color 150ms, background-color 150ms, border-color 150ms; height: 32px; padding: 0 12px; font-weight: 600; background: rgb(var(--ink)); color: rgb(var(--ground)); } .ds-btn-inverse:hover { background: rgb(var(--ink) / 0.85); } .ds-btn-inverse:focus-visible { outline: 2px solid rgb(var(--select)); outline-offset: 2px; } .ds-btn-inverse:disabled { opacity: 0.45; cursor: not-allowed; }"
+    },
+    {
+      "name": "Field with Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Label, 40px control, and a reserved hint/error line so the form never reflows.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-phone\">Mobile number</label><input id=\"ds-phone\" class=\"ds-input\" placeholder=\"98765 43210\"><p>For your payment receipt and UPI.</p></div>",
+      "css": ".ds-field { font-family: \"Archivo Variable\", Mukta, system-ui, sans-serif; max-width: 320px; } .ds-field label { display: block; margin-bottom: 6px; font-size: 0.8125rem; line-height: 1.25rem; font-weight: 500; color: rgb(var(--ink)); } .ds-field p { margin: 4px 0 0; min-height: 1.05rem; font-size: 0.75rem; line-height: 1.05rem; color: rgb(var(--ink-3)); } .ds-input { font-family: \"Archivo Variable\", Mukta, system-ui, sans-serif; width: 100%; height: 40px; padding: 8px 12px; font-size: 0.8125rem; background: rgb(var(--panel)); color: rgb(var(--ink)); border: 1px solid rgb(var(--line-strong)); border-radius: 6px; transition: border-color 150ms, box-shadow 150ms; } .ds-input::placeholder { color: rgb(var(--ink-3)); } .ds-input:hover { border-color: rgb(var(--ink-3)); } .ds-input:focus { outline: none; border-color: rgb(var(--select)); box-shadow: 0 0 0 2px rgb(var(--select) / 0.25); }"
+    },
+    {
+      "name": "Badges",
+      "kind": "chip",
+      "refersTo": "badge-neutral",
+      "description": "Neutral for ordinary states; colour only for exceptions; Coming soon is always warn.",
+      "html": "<div class=\"ds-badges\"><span class=\"ds-badge\">Draft</span><span class=\"ds-badge ds-accent\">Rendering</span><span class=\"ds-badge ds-good\">Ready</span><span class=\"ds-badge ds-bad\">Failed</span><span class=\"ds-badge ds-warn\">Coming soon</span></div>",
+      "css": ".ds-badges { font-family: \"Archivo Variable\", Mukta, system-ui, sans-serif; display: flex; gap: 8px; flex-wrap: wrap; } .ds-badge { display: inline-flex; align-items: center; height: 20px; padding: 0 6px; border-radius: 4px; font-size: 0.6875rem; line-height: 1; font-weight: 600; white-space: nowrap; background: rgb(var(--panel-3)); color: rgb(var(--ink-2)); } .ds-accent { background: rgb(var(--accent-soft)); color: rgb(var(--accent)); } .ds-good { background: rgb(var(--good-soft)); color: rgb(var(--good)); } .ds-bad { background: rgb(var(--bad-soft)); color: rgb(var(--bad)); } .ds-warn { background: rgb(var(--warn-soft)); color: rgb(var(--warn)); }"
+    },
+    {
+      "name": "Panel with Head and Meter",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Bordered 8px block with a 40px sentence-case head; the meter turns warn at 90% and bad past 100%.",
+      "html": "<section class=\"ds-panel\"><div class=\"ds-panel-head\"><span>Usage this month</span><em>Resets 1 Dec</em></div><div class=\"ds-panel-body\"><div class=\"ds-meter-row\"><span>Reels</span><b>12 of 60 reels</b></div><div class=\"ds-meter\" role=\"meter\" aria-valuenow=\"12\" aria-valuemin=\"0\" aria-valuemax=\"60\"><i style=\"width:20%\"></i></div><div class=\"ds-meter-row\"><span>Dubbing minutes</span><b>27 of 30 min</b></div><div class=\"ds-meter\" role=\"meter\" aria-valuenow=\"27\" aria-valuemin=\"0\" aria-valuemax=\"30\"><i class=\"ds-warn\" style=\"width:90%\"></i></div></div></section>",
+      "css": ".ds-panel { font-family: \"Archivo Variable\", Mukta, system-ui, sans-serif; max-width: 360px; background: rgb(var(--panel)); border: 1px solid rgb(var(--line)); border-radius: 8px; } .ds-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 40px; padding: 0 16px; border-bottom: 1px solid rgb(var(--line)); font-size: 0.8125rem; line-height: 1.25rem; font-weight: 600; color: rgb(var(--ink)); } .ds-panel-head em { font-style: normal; font-size: 0.75rem; font-weight: 400; color: rgb(var(--ink-3)); } .ds-panel-body { padding: 16px; } .ds-meter-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 0.8125rem; color: rgb(var(--ink-2)); } .ds-meter-row b { font-weight: 400; color: rgb(var(--ink)); font-variant-numeric: tabular-nums; } .ds-meter { margin: 8px 0 16px; height: 6px; overflow: hidden; border-radius: 9999px; background: rgb(var(--panel-3)); } .ds-meter i { display: block; height: 100%; border-radius: 9999px; background: rgb(var(--accent)); transition: width 500ms; } .ds-meter i.ds-warn { background: rgb(var(--warn)); }"
+    },
+    {
+      "name": "App Sidebar",
+      "kind": "nav",
+      "refersTo": "app-sidebar",
+      "description": "The signed-in shell: full-width primary New reel, 36px icon-and-label rows, active on panel-3.",
+      "html": "<nav class=\"ds-side\" aria-label=\"Studio\"><button class=\"ds-side-new\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14\"/><path d=\"M5 12h14\"/></svg>New reel</button><a class=\"ds-side-link is-active\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"2.18\"/><path d=\"M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 17h5M17 7h5\"/></svg>Reels</a><a class=\"ds-side-link\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 20V10M18 20V4M6 20v-4\"/></svg>Insights</a><a class=\"ds-side-link\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M9 18h6M10 22h4\"/><path d=\"M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z\"/></svg>Ideas</a></nav>",
+      "css": ".ds-side { font-family: \"Archivo Variable\", Mukta, system-ui, sans-serif; display: flex; flex-direction: column; gap: 2px; width: 240px; padding: 12px 8px; background: rgb(var(--panel)); border-right: 1px solid rgb(var(--line)); } .ds-side-new { font-family: \"Archivo Variable\", Mukta, system-ui, sans-serif; display: flex; align-items: center; justify-content: center; gap: 8px; height: 32px; margin: 0 4px 16px; border: 0; border-radius: 6px; background: rgb(var(--accent)); color: rgb(var(--accent-ink)); font-size: 0.8125rem; font-weight: 600; cursor: pointer; transition: background-color 150ms; } .ds-side-new:hover { background: rgb(var(--accent-deep)); } .ds-side-link { display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 10px; border-radius: 6px; font-size: 0.8125rem; font-weight: 500; color: rgb(var(--ink-2)); text-decoration: none; transition: color 150ms, background-color 150ms; } .ds-side-link:hover { background: rgb(var(--panel-2)); color: rgb(var(--ink)); } .ds-side-link.is-active { background: rgb(var(--panel-3)); color: rgb(var(--ink)); } .ds-side-new:focus-visible, .ds-side-link:focus-visible { outline: 2px solid rgb(var(--select)); outline-offset: 2px; }"
+    },
+    {
+      "name": "Timeline Tracks",
+      "kind": "custom",
+      "refersTo": "timeline",
+      "description": "Video track filled by clip kind, amber cue chips with the live cue ringed in ink, the red playhead with a pentagon cap.",
+      "html": "<div class=\"ds-tl\"><div class=\"ds-heads\"><span>Video</span><span>Captions</span></div><div class=\"ds-lanes\"><div class=\"ds-video\"><span style=\"width:22%\" class=\"ds-k-solid\"><b>Hook</b><small>2.9s</small></span><span style=\"width:40%\" class=\"ds-k-clip is-sel\"><b>Scene 1</b><small>5.1s</small></span><span style=\"width:38%\" class=\"ds-k-photo\"><b>Scene 2</b><small>4.7s</small></span></div><div class=\"ds-cues\"><span style=\"left:2%;width:18%\">Patients search for you</span><span class=\"is-live\" style=\"left:22%;width:18%\">Your front desk answers</span><span style=\"left:42%;width:18%\">the same question</span></div><div class=\"ds-ph\" style=\"left:32%\"><i></i></div></div></div>",
+      "css": ".ds-tl { font-family: \"Archivo Variable\", Mukta, system-ui, sans-serif; display: flex; width: 560px; background: rgb(var(--panel)); border-top: 1px solid rgb(var(--line)); } .ds-heads { display: flex; flex-direction: column; width: 96px; border-right: 1px solid rgb(var(--line)); padding-top: 0; } .ds-heads span { display: flex; align-items: center; padding: 0 12px; font-size: 0.75rem; font-weight: 500; color: rgb(var(--ink-2)); } .ds-heads span:first-child { height: 64px; } .ds-heads span:last-child { height: 36px; border-top: 1px solid rgb(var(--line)); } .ds-lanes { position: relative; flex: 1; padding: 0 8px; } .ds-video { display: flex; height: 64px; padding: 6px 0; } .ds-video span { display: flex; flex-direction: column; justify-content: center; margin: 0 1px; padding: 0 8px; border-radius: 6px; color: rgb(var(--accent-ink)); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.25); overflow: hidden; cursor: pointer; } .ds-video b { font-size: 0.75rem; font-weight: 600; } .ds-video small { font-size: 0.6875rem; opacity: 0.75; font-variant-numeric: tabular-nums; } .ds-video .is-sel { box-shadow: inset 0 0 0 2px rgb(var(--ink)); } .ds-k-clip { background: rgb(var(--kind-clip)); } .ds-k-photo { background: rgb(var(--kind-photo)); } .ds-k-solid { background: rgb(var(--kind-solid)); } .ds-cues { position: relative; height: 36px; border-top: 1px solid rgb(var(--line)); } .ds-cues span { position: absolute; top: 6px; bottom: 6px; padding: 0 6px; border-radius: 4px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 0.6875rem; line-height: 24px; color: rgb(var(--cue-ink)); background: rgb(var(--cue) / 0.7); } .ds-cues span.is-live { background: rgb(var(--cue)); box-shadow: inset 0 0 0 1px rgb(var(--ink)); } .ds-ph { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: rgb(var(--accent)); pointer-events: none; } .ds-ph i { position: absolute; top: 0; left: -5px; width: 12px; height: 14px; background: rgb(var(--accent)); clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Professional Bench",
+    "overview": "Studio is a tool, not a theme. The editor is built from the parts a creator already trusts in CapCut, Descript or Resolve: a tool rail, a library panel, a viewer, a contextual inspector and a multi-track timeline. The brand lives in one red and in precise details; nothing on screen is decoration.\n\nThere are two rooms on one set of token names. The website and sign-in are light (white ground, near-black ink) because they are read in daylight by someone deciding. Every `/app` route is dark neutral graphite because its job is judging pictures, and a bright frame changes how footage reads. `RouteTheme` in `src/App.tsx` sets `data-theme=\"dark\"` on `<html>` before paint; components never choose a room. Density is a working app's: 13px UI text, 40px rows, hairline-divided panels.\n\nType is Archivo at normal width for everything, with tabular figures wherever a number sits in a column, and Mukta taking Devanagari glyph by glyph. The user ruled out dark navy with a blue glow, and cream paper with a serif.\n\nHistory: the earlier world, On Air, was retired on 2026-11-03 because the user said it looked machine-made.",
+    "keyCharacteristics": [
+      "Light website, dark graphite app, one set of token names.",
+      "Red is the only saturated colour; clip kinds and caption cues get muted data hues on the timeline only.",
+      "Archivo at 100% width, a fixed rem scale, tabular figures for time and money.",
+      "Controls 6px, cards 8px, product frames 12px.",
+      "Shadows only on things that float."
+    ],
+    "rules": [
+      {
+        "name": "The One Red Rule",
+        "body": "Red is the only saturated colour in the chrome. A second accent hue never enters; the kind and cue hues stay inside the timeline and thumbnails.",
+        "section": "colors"
+      },
+      {
+        "name": "The One File Rule",
+        "body": "Every colour is an RGB triplet defined twice in `src/index.css` and consumed as `rgb(var(--x) / alpha)` through Tailwind names. A component never carries a hex or rgb literal.",
+        "section": "colors"
+      },
+      {
+        "name": "The Never Alone Rule",
+        "body": "A status colour always travels with a word or an icon: badges carry their label, toasts their icon, the tool-rail dot a screen-reader \"in progress\" or \"done\".",
+        "section": "colors"
+      },
+      {
+        "name": "The Fixed Scale Rule",
+        "body": "Sizes come from the ten-step rem scale in `tailwind.config.js` (2xs to 5xl, about 1.2 apart); no fluid type, no px font sizes.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every timecode, duration, count, percentage and price is set with tabular figures (`<time>` and `.tabular` get them globally).",
+        "section": "typography"
+      },
+      {
+        "name": "The Float-Only Rule",
+        "body": "A shadow means the thing is above the page. Cards, panels and tiles sit flat on a hairline or an inset ring.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** take every colour from the token names; retune either room in `src/index.css` only.",
+      "**Do** let `RouteTheme` choose the room: anything under `/app` is dark, everything else light.",
+      "**Do** keep one red primary per view; use inverse ink for the second call on the website.",
+      "**Do** use tabular figures for every number in a column, and the fixed rem scale for every size.",
+      "**Do** show the keyboard focus ring (2px `select`, 2px offset) and leave the mouse click without one.",
+      "**Do** make phone-menu targets at least 44px, and keep inputs at 16px on coarse pointers so iOS does not zoom.",
+      "**Do** honour reduced motion: the global override cuts animations and transitions to 0.01ms and turns off smooth scroll.",
+      "**Do** read prices, plans, regions, taxes and languages from `GET /api/catalogue`; never type one into a component.",
+      "**Do** state what a thing does or what to do next (\"Select a clip to edit it.\") and mark anything not switched on with a `warn` **Coming soon** badge.",
+      "**Do** compare a creator only with their own earlier numbers (\"vs previous 30 days\")."
+    ],
+    "donts": [
+      "**Don't** introduce a second accent hue, a gradient or a glow; the skeleton's neutral sweep is a loading device, not decoration.",
+      "**Don't** put a shadow on anything that does not float.",
+      "**Don't** use a radius outside the scale or an arbitrary radius value.",
+      "**Don't** set type condensed, in tracked capitals, or as an eyebrow label above a heading; the heading carries itself.",
+      "**Don't** narrate the product in its copy: no honesty disclaimers, no notes about how it was made, no explaining the interface to itself.",
+      "**Don't** tick a feature that is not live, or invent customers, testimonials, ratings, counts or industry benchmarks.",
+      "**Don't** restyle the reel's own captions with app chrome; inside the reel they keep the engine treatment (outlined white over footage, a band over screenshots), set in Inter.",
+      "**Don't** build dark navy with a blue glow, or cream paper with a serif."
+    ]
+  }
+}

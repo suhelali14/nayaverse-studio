@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Studio Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <header class="bar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Studio</span>
+        <span class="sub">editor</span>
+      </div>
+
+      <div class="bar-actions">
+        <label class="btn">
+          Open media
+          <input id="open" type="file" accept="video/*,image/*" multiple hidden />
+        </label>
+        <button id="addcard" class="btn" type="button">Add card</button>
+        <button id="export" class="btn primary" type="button">Export draft</button>
+      </div>
+    </header>
+
+    <p id="note" class="note" hidden></p>
+
+    <main class="work">
+      <section class="stage" aria-label="Preview">
+        <canvas id="preview" width="1080" height="1920"></canvas>
+        <div id="stats" class="stats" aria-live="off"></div>
+      </section>
+
+      <aside class="side">
+        <h2>Shot</h2>
+        <label class="field">
+          <span>Caption burnt onto this shot</span>
+          <textarea id="caption" rows="3" placeholder="Select a shot on the timeline"></textarea>
+        </label>
+
+        <div class="order">
+          <button id="left" class="btn small" type="button">&larr; Move earlier</button>
+          <button id="right" class="btn small" type="button">Move later &rarr;</button>
+        </div>
+
+        <h2>Keys</h2>
+        <dl class="keys">
+          <dt>Space</dt><dd>play or pause</dd>
+          <dt>&larr; &rarr;</dt><dd>step one frame</dd>
+          <dt>Shift + &larr; &rarr;</dt><dd>step one second</dd>
+          <dt>S</dt><dd>split at the playhead</dd>
+          <dt>Delete</dt><dd>ripple-delete the shot</dd>
+        </dl>
+
+        <h2>How this works</h2>
+        <p class="prose">
+          One document describes the edit. The preview paints it and the export writes it, from
+          the same numbers &mdash; so what you approve is what comes out.
+        </p>
+        <p class="prose">
+          Scrubbing is frame-exact. A <code>&lt;video&gt;</code> element can only land on about
+          every eighth frame; this decodes a whole group of pictures at once and keeps it, so
+          stepping backwards costs nothing. Watch the counters.
+        </p>
+      </aside>
+    </main>
+
+    <footer class="transport">
+      <div class="controls">
+        <button id="back" class="btn icon" type="button" aria-label="Previous frame">&#9664;|</button>
+        <button id="play" class="btn" type="button">Play</button>
+        <button id="fwd" class="btn icon" type="button" aria-label="Next frame">|&#9654;</button>
+        <span id="clock" class="clock">00:00.00 / 00:00.00</span>
+        <span class="spacer"></span>
+        <button id="split" class="btn small" type="button">Split</button>
+        <button id="delete" class="btn small danger" type="button">Delete</button>
+      </div>
+      <div id="strip" class="strip" role="group" aria-label="Timeline"></div>
+      <p id="warn" class="warn" hidden></p>
+    </footer>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
