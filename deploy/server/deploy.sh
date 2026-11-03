@@ -46,10 +46,17 @@ export IMAGE_TAG
 "${COMPOSE[@]}" up -d
 
 if healthy; then
+  previous="$(cat "$LAST" 2>/dev/null || echo none)"
   echo "$IMAGE_TAG" > "$LAST"
   echo "Studio API healthy on $IMAGE_TAG"
-  # Keep the current and previous images; older ones only fill the disk.
-  docker image prune -f --filter "label!=keep" >/dev/null 2>&1 || true
+  # Keep the running image and the one before it (for rollback). A plain
+  # `docker image prune` only removes untagged images, and every deploy
+  # pulls a tagged one, so older tags are removed by name first.
+  repo="${IMAGE_TAG%:*}"
+  docker images "$repo" --format '{{.Repository}}:{{.Tag}}' \
+    | grep -vxF -e "$IMAGE_TAG" -e "$previous" \
+    | xargs -r docker rmi >/dev/null 2>&1 || true
+  docker image prune -f >/dev/null 2>&1 || true
   exit 0
 fi
 
